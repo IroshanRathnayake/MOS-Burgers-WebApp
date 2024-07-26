@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  /* font-family: "Nunito Sans", sans-serif; */
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+#orderID {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #dc6b19;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+#DateandTime {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  color: black;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.form-group label {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
+  margin-right: 1px;
+}
+
+.form-group input,
+.form-group select {
+  font-family: "Nunito Sans", sans-serif;
+  border: 1.5px solid #dc6b19;
+  margin-bottom: 10px;
+  padding: 10px;
+  margin: 3px;
+  border-radius: 15px;
+}
+
+.btn-warning {
+  font-family: "Poppins", sans-serif;
+  background-color: #dc6b19 !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border: none;
+  border-radius: 8px !important;
+}
+
+.btn-primary {
+  font-family: "Poppins", sans-serif;
+  background-color: #dc6b19 !important;
+  color: white;
+  border: none !important;
+  border-radius: 20px !important;
+}
+
+.fw-bold {
+  color: #dc6b19;
+}
+
+.btn-custom {
+  margin-bottom: 10px;
+}
