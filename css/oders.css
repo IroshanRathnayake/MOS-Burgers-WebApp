@@ -24,10 +24,9 @@ body {
 }
 
 main.table {
-  width: 85vw;
-  height: 90vh;
+  width: 140vh;
+  height: 100vh;
   background-color: #fff5;
-
   backdrop-filter: blur(7px);
   /* box-shadow: 0 .4rem .8rem #0005; */
   border-radius: 0.8rem;
@@ -153,6 +152,9 @@ tbody tr td img {
   transition: 0.2s ease-in-out;
 }
 
+.view{
+    font-weight: 600;
+}
 tbody tr.hide td,
 tbody tr.hide td p {
   padding: 0;

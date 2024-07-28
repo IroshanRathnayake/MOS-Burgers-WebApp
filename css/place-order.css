@@ -28,7 +28,8 @@ h2 {
   font-weight: 600;
   color: black;
   font-size: 1rem;
-  margin-right: 10px;
+  margin-right: 255px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
@@ -70,4 +71,46 @@ h2 {
 
 .btn-custom {
   margin-bottom: 10px;
+}
+
+.bi-person-fill-add{
+  color: #03c90d !important;
+  border: #03c90d solid 2px;
+  border-radius: 10px;  
+}
+
+.spinner-border{
+  margin-top: 37px;
+  margin-left: 190px;
+}
+
+#btnAddCustomer{
+  background: none;
+  border: none;
+}
+
+.modal-title{
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.form-label{
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+
+.form-control{
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600; 
+  border: #dc6b19 solid 1px !important;
+}
+
+.addButton{
+  background-color: #03c90d !important;
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.modal-content {
+  padding: 20px;
 }
