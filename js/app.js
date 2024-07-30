@@ -30,6 +30,12 @@ function showAddCustomerModal() {
   myModal.show();
 }
 
+//menu.html
+function showAddMenuItemModal() {
+  const myModal = new bootstrap.Modal("#modalAddProduct");
+  myModal.show();
+}
+
 //Orders.html Table and Search functionality
 const search = document.querySelector(".input-group input"),
   table_rows = document.querySelectorAll("tbody tr"),
