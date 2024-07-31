@@ -62,7 +62,7 @@ h2 {
   background-color: #dc6b19 !important;
   color: white;
   border: none !important;
-  border-radius: 20px !important;
+  border-radius: 15px !important;
 }
 
 .fw-bold {
@@ -73,39 +73,39 @@ h2 {
   margin-bottom: 10px;
 }
 
-.bi-person-fill-add{
+.bi-person-fill-add {
   color: #03c90d !important;
   border: #03c90d solid 2px;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 
-.spinner-border{
+.spinner-border {
   margin-top: 37px;
   margin-left: 190px;
 }
 
-#btnAddCustomer{
+#btnAddCustomer {
   background: none;
   border: none;
 }
 
-.modal-title{
+.modal-title {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
 
-.form-label{
+.form-label {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 700;
 }
 
-.form-control{
+.form-control {
   font-family: "Nunito Sans", sans-serif;
-  font-weight: 600; 
+  font-weight: 600;
   border: #dc6b19 solid 1px !important;
 }
 
-.addButton{
+.addButton {
   background-color: #03c90d !important;
   border: none !important;
   border-radius: 5px !important;
@@ -113,4 +113,101 @@ h2 {
 
 .modal-content {
   padding: 20px;
+}
+
+.cart-image {
+  margin: 10px 0 10px 0;
+  height: 55px;
+  width: 55px;
+}
+
+.cart-button {
+  background: none;
+  border: none;
+}
+
+.bg-success {
+  background-color: #dc6b19 !important;
+}
+
+.category-card {
+  border: 1px solid #dc6b19;
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+  margin: 5px;
+}
+.category-card:hover {
+  background-color: #bebebe;
+}
+.category-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 3px;
+}
+.product-card {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.product-card img {
+  width: 180px;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 1px solid #000000;
+}
+.order-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+.order-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.action-icons i {
+  cursor: pointer;
+}
+
+.card {
+  /* border: 1px solid #dc6b19 !important; */
+  border-radius: 10px !important;
+  box-shadow: #bebebe 0px 0px 10px 0px !important;
+}
+
+span{
+  font-family: "Poppins", sans-serif;
+}
+
+.implemented-future{
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  color: rgb(6, 131, 16);
+  margin-right: 255px;
+  margin-bottom: 20px;
+}
+
+.btnClear{
+  color: white !important;
+  border: none !important;
+  border-radius: 15px !important;
+  font-weight: 600 !important;
+}
+
+.btnPlaceOrder{
+  background-color: #03c90d !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 15px !important;
+  font-weight: 600 !important;
 }
