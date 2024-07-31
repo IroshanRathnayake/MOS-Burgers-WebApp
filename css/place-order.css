@@ -211,3 +211,17 @@ span{
   border-radius: 15px !important;
   font-weight: 600 !important;
 }
+
+.btnDelete{
+  border: none !important;
+  background: none !important;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  background-color: white !important;
+}
+
+.btnDelete img{
+  width: 25px;
+  height: 25px;
+}
