@@ -8,6 +8,13 @@ Welcome to the MOS Burger System repository! This project is a comprehensive Poi
 - **Customer Interaction**: Keep track of customer details and order history.
 - **Admin Access**: Secure login for administrative tasks like updating menu items and viewing reports.
 
+## Screenshots
+### Place Order Page
+![Place Order](/assets/images/screenshots/order.png)
+
+### Order History Page
+![Add Customer](/assets/images/screenshots/orderHistory.png)
+
 ### Installation
 1. Clone the repository:
    ```sh
