@@ -22,7 +22,7 @@
     <!-- Navigation -->
     <div class="container ">
         <header class="header d-flex flex-wrap justify-content-center py-3 mb-4 mt-3">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+            <a href="../index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
                 <span class="logo fw-bold fs-4">MOS Burgers</span>
             </a>
 
@@ -49,7 +49,7 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form>
+                    <form id="customerForm">
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline" data-mdb-input-init>
@@ -106,8 +106,8 @@
 
                         <!-- Submit button -->
                         <div class="d-flex justify-content-end">
-                            <button type="reset" id="btnClear" class="btn btn-danger fw-bold me-2" data-mdb-ripple-init onclick="clearCustomerForm()">Clear</button>
-                            <button type="submit" id="btnAddCustomerSubmit" class="btn btn-success fw-bold addButton" onclick="addCustomer()" data-mdb-ripple-init>Add Customer</button>
+                            <button type="reset" id="btnClear" class="btn btn-danger me-2" data-mdb-ripple-init onclick="clearCustomerForm()">Clear</button>
+                            <button type="submit" id="btnAddCustomerSubmit" class="btn btn-success addButton" onclick="addCustomer()">Add Customer</button>
                         </div>
                     </form>
                 </div>
@@ -213,7 +213,7 @@
                 <!-- <p class="lead">Experience the perfect burger crafted with fresh ingredients and delicious recipes. From classic favorites to gourmet creations, each bite is a taste of heaven!</p> -->
                 <div class="card p-2">
                 <div class="container">
-                    <form>
+                    <form class="place-order-form">
                         <div class="form-group d-flex justify-content-between m-2">
                             <div>
                                 <label for="orderID">Order ID #</label>
@@ -234,20 +234,20 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control fw-semibold" id="place_order_phoneNumber"
+                            <input type="text" class="form-control" id="place_order_phoneNumber"
                                 placeholder="Search by Phone Number">
                         </div>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control fw-semibold" id="place_order_customerName"
+                            <input type="text" class="form-control" id="place_order_customerName"
                                 placeholder="Customer Name" readonly>
                         </div>
                          <div class="form-group mb-3">
-                            <input type="text" class="form-control fw-semibold" id="place_order_location"
+                            <input type="text" class="form-control" id="place_order_location"
                                 placeholder="Location" readonly>
                         </div>
                         <div class="form-group mb-3">
-                            <div class="m-2 d-flex justify-content-between">
-                                <p class="fw-medium">Total items: <span id="total-items">0</span></p>
+                            <div class="m-2 d-flex justify-content-between total-items">
+                                <p>Total items: <span id="total-items">0</span></p>
                                 <button class="btn btn-link text-danger mb-2" onclick="clearOrderList()">Clear all</button>
                             </div>
                             <div class="order-list" id="order-list">
@@ -257,7 +257,7 @@
                             
                         </div>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control fw-semibold" id="additionalNotes"
+                            <input type="text" class="form-control" id="additionalNotes"
                                 placeholder="Additional Notes">
                         </div>
                         <!-- <div class="form-group mb-3">
@@ -272,11 +272,11 @@
                             </button>
                             
                             <div class="d-flex justify-content-md-between">
-                                <div class="mt-3">
-                                    <h4 class="fw-bold">Price: <span id="total"></span>
-                                        </h4>
-                                    <p class="fw-semibold">Sub Total: <span id="subtotal"></span></p>
-                                    <p class="fw-semibold">Discount :<span id="lblDiscount"></span></p>
+                                <div class="mt-3 prices-list">
+                                    <h5 class="total-price">Price: <span id="total"></span>
+                                        </h5>
+                                    <p class="sub-total mb-0">Sub Total: <span id="subtotal"> </span></p>
+                                    <p class="discount-price">Discount : <span id="lblDiscount"> </span></p>
 
                                 </div>
                             </div>
@@ -286,8 +286,8 @@
                               <!-- <div id="spinner" class="spinner-border text-success m-4" role="status">
                                     <span class="visually-hidden" id="spinner">Loading...</span>
                                   </div> -->
-                            <button type="button" class="btn btn-danger p-3 fw-bold m-1 btnClear" id="btnClear" onclick="btnClearClicked()">clear</button>
-                            <button type="submit" class="btn btn-primary p-3 fw-bold m-1 btnPlaceOrder" id="btnPlaceOrder" onclick="btnPlaceOrderClicked()">Place Order</button>
+                            <button type="button" class="btn btn-danger p-3 m-1 btnClear" id="btnClear" onclick="btnClearClicked()">Clear</button>
+                            <button type="submit" class="btn btn-primary p-3 m-1 btnPlaceOrder" id="btnPlaceOrder" onclick="btnPlaceOrderClicked()">Place Order</button>
                         </div>
                         
 

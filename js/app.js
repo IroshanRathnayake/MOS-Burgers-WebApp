@@ -12,9 +12,6 @@ let datetime = currentdate.getDate() + "/"
                 + currentdate.getSeconds();
 document.getElementById("DateandTime").innerHTML = datetime;
 
-//Order ID Array
-
-
 
 const customerArray = [{
   customerID : 1,
@@ -61,6 +58,12 @@ function searchCustomerbyPhoneNumber(){
   }
 }
 
+
+//Stop Refreshing the page
+let form = document.getElementById("customerForm");
+function handleForm(event){event.preventDefault();}
+form.addEventListener('submit',handleForm);
+
 function addCustomer() {
   const customerID = customerArray.length + 1;
   const firstName = document.getElementById("modalFirstName").value;
@@ -70,7 +73,8 @@ function addCustomer() {
   const email = document.getElementById("modalEmail").value;
   const phoneNumber = document.getElementById("modalPhoneNumber").value;
   const additionalInfo = document.getElementById("modalAdditionalInfomation").value;
-  customerArray.push({
+
+  let tempCustomerArray = {
     customerID:customerID,
     firstName:firstName, 
     lastName:lastName, 
@@ -78,9 +82,12 @@ function addCustomer() {
     location:location,
     email: email,
     phoneNumber: phoneNumber, 
-    additionalInfo:additionalInfo});
+    additionalInfo:additionalInfo
+  };
+  customerArray.push(tempCustomerArray);
   console.log(customerArray.length);
   console.log(customerArray[customerArray.length - 1].firstName);  
+  clearCustomerForm();
 }
 
 function clearCustomerForm(){
@@ -110,6 +117,9 @@ function btnClearClicked(){
   document.getElementById("place_order_phoneNumber").value = "";
   document.getElementById("additionalNotes").value = "";
   document.getElementById("place_order_phoneNumber").focus();
+
+  console.log(customerArray.length);
+  
 }
 
 //Handle Product-Cards
@@ -236,8 +246,6 @@ function updateOrderList() {
       }
   });
 
-
-
   document.getElementById('total-items').innerText = totalItems;
   document.getElementById('subtotal').innerText = `LKR ${subtotal.toFixed(2)}`;
   
@@ -265,21 +273,45 @@ function clearOrderList() {
   updateOrderList();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderProductList('Burgers');
-  updateOrderList();
-});
-
-//menu.html
-
-function showAddMenuItemModal() {
-  const myModal = new bootstrap.Modal("#modalAddProduct");
-  myModal.show();
-}
-
 //Place Order
 function btnPlaceOrderClicked() {
   console.log("clicked");
   const snipper = (document.getElementById("spinner").style.visibility =
     "hidden");
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProductList('Burgers');
+  updateOrderList();
+  loadMenuTable();
+});
+
+//menu.html
+function showAddMenuItemModal() {
+  const myModal = new bootstrap.Modal("#modalAddProduct");
+  myModal.show();
+}
+
+//Menu Management
+
+//Load Menu Table
+function loadMenuTable(){
+    let table = document.getElementById('tblMenu');
+  
+    let body = ` <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Item Code</th>
+                    <th >Product Name</th>
+                    <th>Category</th>
+                    <th>Price LKR</th>
+                    <th>Discount %</th>
+                    <th>Actions</th>
+                </tr>`;
+  
+    table.innerHTML = '';
+  
+    console.log(productList['Burgers']);
+}
+
+
+

@@ -1,7 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+:root{
+  --primary-color: #dc6b19;
+  --btn-success-color: #03c90d;
+
+  --primary-font: 'Inter', sans-serif;
+  --secondary-font: 'Poppins', sans-serif;
+}
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
 }
 
 .container {
@@ -10,21 +17,20 @@ body {
 }
 
 h2 {
-  /* font-family: "Nunito Sans", sans-serif; */
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
+  font-family: var(--secondary-font);
+  font-weight: 600;
 }
 
 #orderID {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 700;
-  color: #dc6b19;
+  color: var(--primary-color);
   font-size: 1.1rem;
   margin-right: 10px;
 }
 
 #DateandTime {
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   color: black;
   font-size: 1rem;
@@ -33,49 +39,49 @@ h2 {
 }
 
 .form-group label {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: bold;
+  font-family: var(--primary-font);
+  font-weight: 600;
   margin-right: 1px;
 }
 
-.form-group input,
+.place-order-form .form-group input,
 .form-group select {
-  font-family: "Nunito Sans", sans-serif;
-  border: 1.5px solid #dc6b19;
+  font-family: var(--primary-font);
+  border: 1.5px solid var(--primary-color);
   margin-bottom: 10px;
   padding: 10px;
   margin: 3px;
   border-radius: 15px;
 }
 
-.btn-warning {
-  font-family: "Poppins", sans-serif;
-  background-color: #dc6b19 !important;
-  color: white !important;
-  font-weight: 600 !important;
-  border: none;
-  border-radius: 8px !important;
+.place-order-form .form-control{
+  font-family: var(--primary-font);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-.btn-primary {
-  font-family: "Poppins", sans-serif;
-  background-color: #dc6b19 !important;
-  color: white;
-  border: none !important;
-  border-radius: 15px !important;
+.place-order-form .prices-list .total-price{
+  font-family: var(--primary-font);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--primary-color);
 }
 
-.fw-bold {
-  color: #dc6b19;
+.place-order-form .prices-list p{
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 1rem;
 }
 
-.btn-custom {
-  margin-bottom: 10px;
+.order-item p{
+  font-family: var(--primary-font);
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .bi-person-fill-add {
-  color: #03c90d !important;
-  border: #03c90d solid 2px;
+  color: var(--btn-success-color) !important;
+  border: var(--btn-success-color) solid 2px;
   border-radius: 10px;
 }
 
@@ -89,32 +95,47 @@ h2 {
   border: none;
 }
 
+/* Customer Modal */
 .modal-title {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--secondary-font);
   font-weight: bold;
 }
 
-.form-label {
-  font-family: "Nunito Sans", sans-serif;
+#customerForm .form-label {
+  font-family: var(--primary-font);
   font-weight: 700;
+  font-size: 1rem;
 }
 
-.form-control {
-  font-family: "Nunito Sans", sans-serif;
+#customerForm .form-control {
+  font-family: var(--primary-font);
+  font-weight: 500;
+  font-size: 0.9rem ;
+  border: var(--primary-color) solid 1px !important;
+
+}
+
+#customerForm #btnClear{
+  font-family: var(--primary-font);
   font-weight: 600;
-  border: #dc6b19 solid 1px !important;
+  font-size: 0.9rem;
 }
 
-.addButton {
-  background-color: #03c90d !important;
+#customerForm .addButton {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: var(--btn-success-color) !important;
   border: none !important;
-  border-radius: 5px !important;
+  border-radius: 5px !important;  
 }
 
 .modal-content {
   padding: 20px;
 }
 
+
+/* Card Content */
 .cart-image {
   margin: 10px 0 10px 0;
   height: 55px;
@@ -126,18 +147,14 @@ h2 {
   border: none;
 }
 
-.bg-success {
-  background-color: #dc6b19 !important;
-}
-
 .category-card {
-  border: 1px solid #dc6b19;
+  border: 1px solid var(--primary-color);
   height: 100px;
   width: 100px;
   border-radius: 8px;
   text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
+  font-family: var(--secondary-font);
+  font-weight: 600;
   font-size: 14px;
   padding: 10px 0 10px 0;
   cursor: pointer;
@@ -152,8 +169,8 @@ h2 {
   margin-bottom: 3px;
 }
 .product-card {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 600;
+  font-family: var(--primary-font);
+  font-weight: 500;
   border: 1px solid #ddd;
   border-radius: 8px;
   text-align: center;
@@ -180,36 +197,61 @@ h2 {
 }
 
 .card {
-  /* border: 1px solid #dc6b19 !important; */
   border-radius: 10px !important;
   box-shadow: #bebebe 0px 0px 10px 0px !important;
 }
 
+.card-title{
+  font-family: var(--secondary-font);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.card-text{
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: 700;
+}
 span{
-  font-family: "Poppins", sans-serif;
+  font-family: var(--secondary-font);
 }
 
 .implemented-future{
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--primary-font);
   font-weight: 600;
   color: rgb(6, 131, 16);
   margin-right: 255px;
   margin-bottom: 20px;
 }
 
-.btnClear{
-  color: white !important;
-  border: none !important;
-  border-radius: 15px !important;
-  font-weight: 600 !important;
+.place-order-form .btnClear{
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 1rem;
 }
 
-.btnPlaceOrder{
-  background-color: #03c90d !important;
-  color: white !important;
+.place-order-form .btnPlaceOrder{
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: var(--btn-success-color) !important;
   border: none !important;
-  border-radius: 15px !important;
-  font-weight: 600 !important;
+  border-radius: 5px !important;  
+}
+
+.btnPlaceOrder:hover{
+  background-color: #00ad09 !important;
+}
+
+.place-order-form .total-items{
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.place-order-form .total-items button{
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .btnDelete{
@@ -224,4 +266,11 @@ span{
 .btnDelete img{
   width: 25px;
   height: 25px;
+}
+
+.order-list{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: auto;
+  max-height: 300px;
 }
