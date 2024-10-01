@@ -14,7 +14,7 @@
         crossorigin="anonymous"></script>
     
 </head>
-<body>
+<body onload="loadMenuTable()">
       <!-- Navigation -->
       <div class="container ">
         <header class="header d-flex flex-wrap justify-content-center py-3 mb-4 mt-3">
@@ -133,7 +133,7 @@
           <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2 class="fw-bold display-6 m-3">Product List</h2>
-                <button class="btn btn-primary fw-medium" onclick="showAddMenuItemModal()">+ Add New Product</button>
+                <button type="button" class="btn btn-primary fw-medium" id="btnAddNewProduct" onclick="showAddMenuItemModal()"> + Add New Product</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped" id="tblMenu">
@@ -207,7 +207,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/app.js"></script>
-    <!-- <script src="../js/menu.js"></script> -->
+    <script type="module" src="../js/menu.js"></script>
+    <!-- <script src="../js/app.js"></script> -->
 </body>
 </html>

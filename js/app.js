@@ -1,4 +1,3 @@
-
 //Order Management Section
 //Add Customer Modal in place-order.html
 
@@ -6,12 +5,13 @@
 let currentdate = new Date(); // for current date
 let datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+                + currentdate.getFullYear() ;
+                
+                // + " @ "  
+                // + currentdate.getHours() + ":"  
+                // + currentdate.getMinutes() + ":" 
+                // + currentdate.getSeconds();
 document.getElementById("DateandTime").innerHTML = datetime;
-
 
 const customerArray = [{
   customerID : 1,
@@ -123,7 +123,7 @@ function btnClearClicked(){
 }
 
 //Handle Product-Cards
-const productList = {
+let productList = {
   "Burgers": [
     { itemCode: "B1001", name: "Classic Burger", price: 1500.00, discount: 0, img: "../assets/images/Burger-Category/Classic Burger (Large).webp" },
     { itemCode: "B1002", name: "Turkey Burger", price: 1600.00,discount: 15, img: "../assets/images/Burger-Category/turkey-burger.png" },
@@ -190,7 +190,7 @@ function renderProductList(category) {
                     <img src="${product.img}" class="card-img-top" alt="${product.name}">
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">LKR ${product.price.toFixed(2)}</p>
+                        <p class="card-text product-price">LKR ${product.price.toFixed(2)}</p>
                     </div>
                 </div>
             `;
@@ -220,6 +220,8 @@ function updateOrderList() {
   let discount = 0;
   let total = 0;
 
+  // <img src="${item.img}" alt="${item.name}"></img>
+
   orderList.forEach((item, index) => {
       if (item.quantity > 0) {
           subtotal += item.price * item.quantity;
@@ -229,18 +231,21 @@ function updateOrderList() {
           const orderItem = document.createElement('div');
           orderItem.className = 'order-item d-flex justify-content-between m-3';
           orderItem.innerHTML = `
-              <img src="${item.img}" alt="${item.name}">
-              <div>
-                  <p>${item.name}</p>
+              <div class="col-5">
+                  <p class="m-0">${item.name}</p>
                   <p>${item.itemCode}</p>
               </div>
-              <div>
+              <div class="col-3">
                   <button class="btn btn-sm btn-secondary" onclick="changeQuantity(${index}, -1)">-</button>
                   <span>${item.quantity}</span>
                   <button class="btn btn-sm btn-secondary" onclick="changeQuantity(${index}, 1)">+</button>
               </div>
+              <div class="col-2">
               <p>LKR ${(item.price * item.quantity).toFixed(2)}</p>
+              </div>
+              <div class="col-2 text-center">
               <button type="button" class="btnDelete m-1 pb-3" onclick="removeItem(${index})"><img src="../assets/icons/delete.svg" alt="Delete"></button>
+              </div>
           `;
           orderListContainer.appendChild(orderItem);
       }
@@ -286,32 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
   loadMenuTable();
 });
 
-//menu.html
-function showAddMenuItemModal() {
-  const myModal = new bootstrap.Modal("#modalAddProduct");
-  myModal.show();
+function getProductList(){
+  return this.productList;
 }
 
-//Menu Management
+//export {getProductList}
 
-//Load Menu Table
-function loadMenuTable(){
-    let table = document.getElementById('tblMenu');
-  
-    let body = ` <tr>
-                    <th><input type="checkbox"></th>
-                    <th>Item Code</th>
-                    <th >Product Name</th>
-                    <th>Category</th>
-                    <th>Price LKR</th>
-                    <th>Discount %</th>
-                    <th>Actions</th>
-                </tr>`;
-  
-    table.innerHTML = '';
-  
-    console.log(productList['Burgers']);
-}
 
 
 

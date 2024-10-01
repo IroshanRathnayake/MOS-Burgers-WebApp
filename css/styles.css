@@ -29,6 +29,7 @@ h2 {
   color: var(--primary-color);
 }
 
+
 .navbar a {
   position: relative;
   color: #000000;
@@ -77,4 +78,10 @@ h2 {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
   color: white !important;
+}
+
+@media (max-width: 800px) {
+  .hero-image{
+    visibility: hidden;
+  }
 }

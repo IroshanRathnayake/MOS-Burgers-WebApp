@@ -171,6 +171,7 @@ h2 {
 .product-card {
   font-family: var(--primary-font);
   font-weight: 500;
+  height: 17rem !important;
   border: 1px solid #ddd;
   border-radius: 8px;
   text-align: center;
@@ -273,4 +274,8 @@ span{
   overflow-x: hidden;
   height: auto;
   max-height: 300px;
+}
+
+.product-price{
+  color: var(--primary-color);
 }
