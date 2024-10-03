@@ -1,4 +1,4 @@
-export let productList = {
+export let productList = {  
     "Burgers": [
       { itemCode: "B1001", name: "Classic Burger", price: 1500.00, discount: 0, img: "../assets/images/Burger-Category/Classic Burger (Large).webp" },
       { itemCode: "B1002", name: "Turkey Burger", price: 1600.00,discount: 15, img: "../assets/images/Burger-Category/turkey-burger.png" },
