@@ -45,8 +45,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalLabel">Add New Product</h5>
-                        <button type="reset" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body p-4">
                         <form id="productForm">
@@ -131,7 +130,7 @@
                                 <button type="reset" id="btnClear" class="btn btn-danger fw-bold me-2"
                                     data-mdb-ripple-init>Clear</button>
                                 <button type="submit" id="btnAddProductSubmit"
-                                    class="btn btn-success fw-bold addButton" onclick="addNewProduct()"
+                                    class="btn btn-success fw-bold addButton"
                                     data-mdb-ripple-init>Add Product</button>
                             </div>
                         </form>
@@ -154,6 +153,44 @@
                 </div>
             </div>
         </div>
+
+        <!-- Model to loadProduct -->
+        <div class="modal fade" id="modalViewProduct" tabindex="-1" aria-labelledby="modalViewProductLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalViewProductLabel">Product Details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="text-center">
+                    <img id="viewProductImage" class="img-fluid mb-3" alt="Product Image">
+                  </div>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <strong>Item Code:</strong> <span id="viewItemCode"></span>
+                    </li>
+                    <li class="list-group-item">
+                      <strong>Name:</strong> <span id="viewProductName"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Category:</strong> <span id="viewProductCategory"></span>
+                      </li>
+                    <li class="list-group-item">
+                      <strong>Price:</strong> LKR <span id="viewProductPrice"></span>
+                    </li>
+                    <li class="list-group-item">
+                      <strong>Discount:</strong> <span id="viewProductDiscount"></span>%
+                    </li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
 
         <div class="container mt-1">
             <div class="row d-flex justify-content-between align-items-center mb-3">

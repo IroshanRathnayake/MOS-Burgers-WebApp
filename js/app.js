@@ -36,7 +36,11 @@ const customerArray = [{
 
 ];
 
-document.getElementById("orderID").innerHTML = "P00" + (customerArray.length+1);
+updateOrderID();
+
+function updateOrderID(){
+  document.getElementById("orderID").innerHTML = "P00" + (customerArray.length+1);
+}
 
 let phoneNumber = document.getElementById("place_order_phoneNumber");
 
@@ -87,6 +91,7 @@ function addCustomer() {
   customerArray.push(tempCustomerArray);
   console.log(customerArray.length);
   console.log(customerArray[customerArray.length - 1].firstName);  
+  updateOrderID();
   clearCustomerForm();
 }
 
