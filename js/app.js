@@ -1,17 +1,10 @@
-// import {
-//   getProducts,
-//   setCustomer,
-//   getCustomers,
-//   getOrders,
-//   setOrder,
-// } from "./data.js";
-
-
-import { getProducts } from "./data.js";
-import { setCustomer } from "./data.js";
-import { getCustomers } from "./data.js";
-import { getOrders } from "./data.js";
-import { setOrder } from "./data.js";
+import {
+  getProducts,
+  setCustomer,
+  getCustomers,
+  getOrders,
+  setOrder,
+} from "./data.js";
 
 let products = getProducts();
 let customers = getCustomers();
