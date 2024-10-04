@@ -1,7 +1,14 @@
-import { productList, customerArray } from "./data.js";
+import {
+  getProducts,
+  setCustomer,
+  getCustomers,
+  getOrders,
+  setOrder,
+} from "./data.js";
 
-let products = productList;
-let customers = customerArray;
+let products = getProducts();
+let customers = getCustomers();
+let orderList = getOrders();
 
 console.log(products);
 
@@ -26,7 +33,9 @@ function dateAndTime() {
 }
 
 function updateOrderID() {
-  document.getElementById("orderID").innerHTML = "P00" + (orderList.length + 1);
+  document.getElementById("orderID").innerHTML = `P${(orderList.length + 1)
+    .toString()
+    .padStart(3, "0")}`;
 }
 
 document
@@ -44,20 +53,65 @@ document
 
 function searchCustomerbyPhoneNumber() {
   let number = document.getElementById("place_order_phoneNumber").value;
-  for (let i = 0; i < customers.length; i++) {
-    if (customers[i].phoneNumber === number) {
-      document.getElementById("place_order_customerName").value =
-        customers[i].firstName + " " + customers[i].lastName;
-      document.getElementById("place_order_location").value =
-        customers[i].location;
-    }
+
+  let index = searchPhoneNumberFromArray(number);
+
+  if (index != -1) {
+    document.getElementById("place_order_customerName").value =
+      customers[index].firstName + " " + customers[index].lastName;
+    document.getElementById("place_order_location").value =
+      customers[index].location;
+  } else {
+    alert("Customer Not Found");
   }
 }
 
-//Stop Refreshing the page
-// let form = document.getElementById("customerForm");
-// function handleForm(event){event.preventDefault();}
-// form.addEventListener('submit',handleForm);
+function searchPhoneNumberFromArray(number) {
+  for (let i = 0; i < customers.length; i++) {
+    if (customers[i].phoneNumber === number) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+//Search Products By Name
+function searchProducts() {
+  const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+  const productListContainer = document.getElementById("product-list");
+  productListContainer.innerHTML = "";
+
+  if (products[currentCategory]) {
+    const filteredProducts = products[currentCategory].filter((product) =>
+      product.name.toLowerCase().includes(searchTerm)
+    );
+
+    // Render the filtered products
+    filteredProducts.forEach((product, index) => {
+      const productCard = document.createElement("div");
+      productCard.className = "col-md-4 mb-3";
+      productCard.innerHTML = `
+                <div class="card product-card align-items-center" id="product-${index}">
+                    <img src="${product.img}" class="card-img-top" alt="${
+        product.name
+      }">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text product-price">LKR ${product.price.toFixed(
+                          2
+                        )}</p>
+                    </div>
+                </div>
+            `;
+      productListContainer.appendChild(productCard);
+      document
+        .getElementById(`product-${index}`)
+        .addEventListener("click", () => addToOrderList(index));
+    });
+  }
+}
+
+document.getElementById("search-bar").addEventListener("input", searchProducts);
 
 document
   .getElementById("btnAddCustomerSubmit")
@@ -65,30 +119,43 @@ document
 
 function addCustomer(event) {
   event.preventDefault();
-  const customerID = customerArray.length + 1;
+  const customerID = getCustomers().length + 1;
   const firstName = document.getElementById("modalFirstName").value;
   const lastName = document.getElementById("modalLastName").value;
   const occupation = document.getElementById("modalOccupation").value;
+  const gender = document.getElementById("modalGender");
   const location = document.getElementById("modalLocation").value;
   const email = document.getElementById("modalEmail").value;
   const phoneNumber = document.getElementById("modalPhoneNumber").value;
   const additionalInfo = document.getElementById(
     "modalAdditionalInfomation"
   ).value;
+  const customerGender = gender.options[gender.selectedIndex].text;
+
+  let img = "../assets/images/man.png";
+  if (customerGender === "Female") {
+    img = "../assets/images/girl.png";
+  }
+
+  if (searchPhoneNumberFromArray(phoneNumber) != -1) {
+    alert("Customer Already Exists");
+    return;
+  }
 
   let tempCustomerArray = {
     customerID: customerID,
+    img: img,
     firstName: firstName,
     lastName: lastName,
     occupation: occupation,
+    customerGender: customerGender,
     location: location,
     email: email,
     phoneNumber: phoneNumber,
     additionalInfo: additionalInfo,
   };
-  customerArray.push(tempCustomerArray);
-  console.log(customerArray.length);
-  console.log(customerArray[customerArray.length - 1].firstName);
+  setCustomer(tempCustomerArray);
+  alert("Customer Added Successfully");
   updateOrderID();
   clearCustomerForm();
 }
@@ -126,8 +193,6 @@ function btnClearClicked() {
   document.getElementById("place_order_phoneNumber").value = "";
   document.getElementById("additionalNotes").value = "";
   document.getElementById("place_order_phoneNumber").focus();
-
-  console.log(customerArray.length);
 }
 
 let currentCategory = "Burgers";
@@ -161,17 +226,15 @@ function renderProductList(category) {
   }
 }
 
-const orderList = [];
+let itemList = [];
 
 function addToOrderList(index) {
   const product = products[currentCategory][index];
-  const orderItem = orderList.find(
-    (item) => item.itemCode === product.itemCode
-  );
+  const orderItem = itemList.find((item) => item.itemCode === product.itemCode);
   if (orderItem) {
     orderItem.quantity += 1;
   } else {
-    orderList.push({ ...product, quantity: 1 });
+    itemList.push({ ...product, quantity: 1 });
   }
   updateOrderList();
 }
@@ -185,7 +248,7 @@ function updateOrderList() {
   let discount = 0;
   let total = 0;
 
-  orderList.forEach((item, index) => {
+  itemList.forEach((item, index) => {
     if (item.quantity > 0) {
       subtotal += item.price * item.quantity;
       totalItems += item.quantity;
@@ -264,24 +327,47 @@ function btnPlaceOrderClicked(event) {
   event.preventDefault();
   console.log("clicked");
 
+  const orderID = document.getElementById("orderID").innerHTML;
+  const date = document.getElementById("DateandTime").innerHTML;
+  const customerName = document.getElementById(
+    "place_order_customerName"
+  ).value;
+  const phoneNumber = document.getElementById("place_order_phoneNumber").value;
+  const address = document.getElementById("place_order_location").value;
+  const additionalNotes = document.getElementById("additionalNotes").value;
+  const totalItems = parseFloat(
+    document.getElementById("total-items").innerHTML
+  );
+  const subtotal = parseFloat(
+    document.getElementById("subtotal").innerHTML.replace("LKR ", "").trim()
+  );
+  const discount = parseFloat(
+    document.getElementById("lblDiscount").innerHTML.replace("LKR ", "").trim()
+  );
+  const total = parseFloat(
+    document.getElementById("total").innerHTML.replace("LKR ", "").trim()
+  );
+  let customerID = "";
+  getCustomers().forEach((customer) => {
+    if (customer.phoneNumber === phoneNumber) {
+      customerID = customer.customerID;
+    }
+  });
+
   // Define the document definition
   var docDefinition = {
     content: [
       { text: "Order Details", style: "header" },
       {
-        text: "Order ID: " + document.getElementById("orderID").innerHTML,
+        text: "Order ID: " + orderID,
         margin: [0, 10, 0, 5],
       },
       {
-        text:
-          "Customer Name: " +
-          document.getElementById("place_order_customerName").value,
+        text: "Customer Name: " + customerName,
         margin: [0, 0, 0, 5],
       },
       {
-        text:
-          "Phone Number: " +
-          document.getElementById("place_order_phoneNumber").value,
+        text: "Phone Number: " + phoneNumber,
         margin: [0, 0, 0, 15],
       },
       {
@@ -292,20 +378,19 @@ function btnPlaceOrderClicked(event) {
         },
       },
       {
-        text:
-          "Total Items: " + document.getElementById("total-items").innerHTML,
+        text: totalItems,
         margin: [0, 10, 0, 5],
       },
       {
-        text: "Sub Total: " + document.getElementById("subtotal").innerHTML,
+        subtotal,
         margin: [0, 0, 0, 5],
       },
       {
-        text: "Discount: " + document.getElementById("lblDiscount").innerHTML,
+        discount,
         margin: [0, 0, 0, 5],
       },
       {
-        text: "Total: " + document.getElementById("total").innerHTML,
+        total,
         style: "total",
       },
     ],
@@ -324,7 +409,7 @@ function btnPlaceOrderClicked(event) {
   };
 
   // Add order items to the table
-  orderList.forEach((item) => {
+  itemList.forEach((item) => {
     if (item.quantity > 0) {
       docDefinition.content[4].table.body.push([
         item.name,
@@ -335,26 +420,31 @@ function btnPlaceOrderClicked(event) {
     }
   });
 
+  const newOrder = {
+    customerID: customerID,
+    customerName: customerName,
+    phoneNumber: phoneNumber,
+    address: address,
+    orderId: orderID,
+    items: itemList,
+    additionalInfo: additionalNotes,
+    date: date,
+    totalItems: totalItems,
+    subtotal: subtotal,
+    discount: discount,
+    totalAmount: total,
+  };
+
+  //setOrder(newOrder);
+  console.log(newOrder);
+
   // Generate the PDF
   pdfMake.createPdf(docDefinition).download("order_details.pdf");
+  updateOrderID();
+  clearOrderList();
+  btnClearClicked();
 
   console.log("PDF generation initiated");
-}
-
-// Load produts from local storage
-function loadProductsFromLocalStorage() {
-  const storedProducts = localStorage.getItem("productList");
-  if (storedProducts) {
-    products = JSON.parse(storedProducts);
-  }
-}
-
-// Load customers from local storage
-function loadCustomersFromLocalStorage() {
-  const storedCustomers = localStorage.getItem("customerList");
-  if (storedCustomers) {
-    customers = JSON.parse(storedCustomers);
-  }
 }
 
 window.onload = function () {
@@ -362,9 +452,6 @@ window.onload = function () {
   updateOrderID();
   renderProductList("Burgers");
   updateOrderList();
-  loadMenuTable();
-  loadProductsFromLocalStorage();
-  loadCustomersFromLocalStorage();
 };
 
 // Product Category button Action

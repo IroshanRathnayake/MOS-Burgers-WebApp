@@ -1,6 +1,42 @@
+import { getOrders } from "./data.js";
+
+let orderList = getOrders();
+
+console.log(orderList);
+
+function renderOrderTable() {
+  const tableBody = document.querySelector(".table-body tbody");
+  tableBody.innerHTML = "";
+
+  orderList.forEach((order) => {
+    console.log(order);
+
+    const row = document.createElement("tr");
+
+    order.img = "../assets/images/man.png";
+    row.innerHTML = `
+            <td>${order.orderId}</td>
+            <td><img src="${order.img}" alt="">${order.customerName}</td>
+            <td>${order.phoneNumber}</td>
+            <td>${order.date}</td>
+            <td><p class="status completed">Completed</p></td>
+            <td><strong>LKR ${parseFloat(order.totalAmount).toFixed(
+              2
+            )}</strong></td>
+            <td><a href="reports.html" class="view">View</a></td>
+        `;
+
+    tableBody.appendChild(row);
+  });
+}
+
+window.onload = function () {
+  renderOrderTable();
+};
+
 //Orders.html Table and Search functionality
 const search = document.querySelector(".input-group input"),
-  table_rows = document.querySelectorAll("tbody tr"),
+  table_rows = document.querySelectorAll(".table-body tbody tr"),
   table_headings = document.querySelectorAll("thead th");
 
 // Searching for specific data
@@ -23,46 +59,46 @@ function searchTable() {
 
 //Sorting - Ordering data of table
 
-table_headings.forEach((head, i) => {
-  let sort_asc = true;
-  head.onclick = () => {
-    table_headings.forEach((head) => head.classList.remove("active"));
-    head.classList.add("active");
+// table_headings.forEach((head, i) => {
+//   let sort_asc = true;
+//   head.onclick = () => {
+//     table_headings.forEach((head) => head.classList.remove("active"));
+//     head.classList.add("active");
 
-    document
-      .querySelectorAll("td")
-      .forEach((td) => td.classList.remove("active"));
-    table_rows.forEach((row) => {
-      row.querySelectorAll("td")[i].classList.add("active");
-    });
+//     document
+//       .querySelectorAll("td")
+//       .forEach((td) => td.classList.remove("active"));
+//     table_rows.forEach((row) => {
+//       row.querySelectorAll("td")[i].classList.add("active");
+//     });
 
-    head.classList.toggle("asc", sort_asc);
-    sort_asc = head.classList.contains("asc") ? false : true;
+//     head.classList.toggle("asc", sort_asc);
+//     sort_asc = head.classList.contains("asc") ? false : true;
 
-    sortTable(i, sort_asc);
-  };
-});
+//     sortTable(i, sort_asc);
+//   };
+// });
 
-function sortTable(column, sort_asc) {
-  [...table_rows]
-    .sort((a, b) => {
-      let first_row = a
-          .querySelectorAll("td")
-          [column].textContent.toLowerCase(),
-        second_row = b.querySelectorAll("td")[column].textContent.toLowerCase();
+// function sortTable(column, sort_asc) {
+//   [...table_rows]
+//     .sort((a, b) => {
+//       let first_row = a
+//           .querySelectorAll("td")
+//           [column].textContent.toLowerCase(),
+//         second_row = b.querySelectorAll("td")[column].textContent.toLowerCase();
 
-      return sort_asc
-        ? first_row < second_row
-          ? 1
-          : -1
-        : first_row < second_row
-        ? -1
-        : 1;
-    })
-    .map((sorted_row) =>
-      document.querySelector("tbody").appendChild(sorted_row)
-    );
-}
+//       return sort_asc
+//         ? first_row < second_row
+//           ? 1
+//           : -1
+//         : first_row < second_row
+//         ? -1
+//         : 1;
+//     })
+//     .map((sorted_row) =>
+//       document.querySelector("tbody").appendChild(sorted_row)
+//     );
+// }
 
 //Converting HTML table to PDF
 

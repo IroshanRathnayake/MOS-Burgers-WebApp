@@ -20,6 +20,19 @@ h2 {
   font-family: var(--secondary-font);
   font-weight: 600;
 }
+#search-bar{
+  font-family: var(--primary-font);
+  width: 90%;
+  padding: 0.4rem;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+#search-bar:focus{
+  width: 100%;
+  outline: none;
+}
 
 #orderID {
   font-family: var(--primary-font);

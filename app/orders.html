@@ -32,10 +32,10 @@
 
           <div class="container">
           <main class="table" id="customers_table">
-            <section class="table__header d-flex justify-content-between align-items-center">
-                <h1 class="fw-semibold m-5">Order History</h1>
-                <div class="input-group d-flex justify-content-center align-items-center">
-                    <input type="search" placeholder="Search Customer" class="p-3 fw-semibold">
+            <section class="table-header d-flex justify-content-between align-items-center">
+                <h2 class="fw-bold display-7 m-3">Order History</h2>
+                <div class="input-group">
+                    <input type="search" placeholder="Search Order..." id="search-bar" class=" p-3 fw-medium">
                     <!-- <img src="/assets/images/search.png" alt=""> -->
                 </div>
                 <div class="export__file m-5">
@@ -48,17 +48,17 @@
                     </div>
                 </div>
             </section>
-            <section class="table__body">
+            <section class="table-body">
                 <table>
                     <thead>
                         <tr>
-                            <th> Order ID <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Customer <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Contact <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Order Date <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Amount <span class="icon-arrow">&UpArrow;</span></th>
-                            <th>View<span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Order ID</th>
+                            <th> Customer</th>
+                            <th> Contact</th>
+                            <th> Order Date</th>
+                            <th> Status</th>
+                            <th> Amount</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,7 +79,7 @@
                             <td> 0712343234 </td>
                             <td> 12 Jun, 2024 </td>
                             <td>
-                                <p class="status cancelled">Cancelled</p>
+                                <p class="status completed">Completed</p>
                             </td>
                             <td> <strong>LKR 5350.50</strong> </td>
                             <td> <a href="reports.html" class="view">View</a></td>
@@ -112,7 +112,7 @@
                             <td> 0712765456 </td>
                             <td> 26 May, 2024 </td>
                             <td>
-                                <p class="status pending">Pending</p>
+                                <p class="status completed">Completed</p>
                             </td>
                             <td> <strong>LKR 3500.99</strong> </td>
                             <td> <a href="reports.html" class="view">View</a></td>
@@ -123,7 +123,7 @@
                             <td> 0746543323 </td>
                             <td> 23 May, 2024 </td>
                             <td>
-                                <p class="status cancelled">Cancelled</p>
+                                <p class="status completed">Completed</p>
                             </td>
                             <td> <strong>LKR 2400.99</strong> </td>
                             <td> <a href="reports.html" class="view">View</a></td>
@@ -145,7 +145,7 @@
                             <td> 0775645612 </td>
                             <td> 13 May, 2024 </td>
                             <td>
-                                <p class="status pending">Pending</p>
+                                <p class="status completed">Completed</p>
                             </td>
                             <td> <strong>LKR 2430.70</strong> </td>
                             <td> <a href="reports.html" class="view">View</a></td>
@@ -156,7 +156,7 @@
                             <td> 0765645823 </td>
                             <td> 07 May, 2024 </td>
                             <td>
-                                <p class="status cancelled">Cancelled</p>
+                                <p class="status completed">Completed</p>
                             </td>
                             <td> <strong>LKR 7600.50</strong> </td>
                             <td> <a href="reports.html" class="view">View</a></td>
@@ -167,7 +167,7 @@
                             <td> 07123876523 </td>
                             <td> 03 May, 2024 </td>
                             <td>
-                                <p class="status cancelled">Cancelled</p>
+                                <p class="status completed">Completed</p>
                             </td>
                             <td> <strong>LKR 980.00</strong> </td>
                             <td> <a href="reports.html" class="view">View</a></td>

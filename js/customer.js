@@ -1,6 +1,6 @@
-import { customerArray } from "./data.js";
+import { getCustomers, setCustomer, deleteCustomerFromArray } from "./data.js";
 
-let customers = customerArray;
+let customers = getCustomers();
 
 console.log(customers);
 
@@ -78,7 +78,7 @@ function loadCustomerDetails(index) {
     document.getElementById("viewCustomerAdditionalInfo").textContent =
       customer.additionalInfo;
 
-    document.getElementById("viewCustomerGender").textContent=customer.gender;
+    document.getElementById("viewCustomerGender").textContent = customer.gender;
 
     new bootstrap.Modal(document.getElementById("modalViewCustomer")).show();
   } else {
@@ -91,17 +91,22 @@ function loadCustomerToModal(index) {
   const customer = customers[index];
 
   const customerID = customerArray.length + 1;
-  const firstName = document.getElementById("modalFirstName").value = customer.firstName;
-  const lastName = document.getElementById("modalLastName").value = customer.lastName;
-  const occupation = document.getElementById("modalOccupation").value = customer.occupation;
-  const gender = document.getElementById("modalGender").value = customer.gender;
-  const location = document.getElementById("modalLocation").value = customer.location;
-  const email = document.getElementById("modalEmail").value = customer.email;
-  const phoneNumber = document.getElementById("modalPhoneNumber").value = customer.phoneNumber;
-  const additionalInfo = document.getElementById(
+  const firstName = (document.getElementById("modalFirstName").value =
+    customer.firstName);
+  const lastName = (document.getElementById("modalLastName").value =
+    customer.lastName);
+  const occupation = (document.getElementById("modalOccupation").value =
+    customer.occupation);
+  const gender = (document.getElementById("modalGender").value =
+    customer.gender);
+  const location = (document.getElementById("modalLocation").value =
+    customer.location);
+  const email = (document.getElementById("modalEmail").value = customer.email);
+  const phoneNumber = (document.getElementById("modalPhoneNumber").value =
+    customer.phoneNumber);
+  const additionalInfo = (document.getElementById(
     "modalAdditionalInfomation"
-  ).value = customer.additionalInfo;
-
+  ).value = customer.additionalInfo);
 
   const customerModal = new bootstrap.Modal("#modalAddCustomer");
   customerModal.show();
@@ -120,9 +125,9 @@ function searchCustomers() {
 
     // Render the filtered customers
     filteredCustomers.forEach((customer, index) => {
-        const customerCard = document.createElement("div");
-        customerCard.className = "col-lg-3 col-md-4 col-sm-12 mb-3 mt-4";
-        customerCard.innerHTML = `
+      const customerCard = document.createElement("div");
+      customerCard.className = "col-lg-3 col-md-4 col-sm-12 mb-3 mt-4";
+      customerCard.innerHTML = `
                   <div class="card customer-card align-items-center">
                       <img src="${customer.img}" class="card-img-top" alt="${customer.name}">
                       <div class="card-body">
@@ -140,28 +145,32 @@ function searchCustomers() {
                       </div>
                   </div>
               `;
-        customerListContainer.appendChild(customerCard);
-  
-        document
-          .getElementById(`btnView-${index}`)
-          .addEventListener("click", () => loadCustomerDetails(index));
-        document
-          .getElementById(`btnEdit-${index}`)
-          .addEventListener("click", () => loadCustomerToModal(index));
-        document
-          .getElementById(`btnDelete-${index}`)
-          .addEventListener("click", () => deleteCustomer(index));
+      customerListContainer.appendChild(customerCard);
+
+      document
+        .getElementById(`btnView-${index}`)
+        .addEventListener("click", () => loadCustomerDetails(index));
+      document
+        .getElementById(`btnEdit-${index}`)
+        .addEventListener("click", () => loadCustomerToModal(index));
+      document
+        .getElementById(`btnDelete-${index}`)
+        .addEventListener("click", () => deleteCustomer(index));
     });
   }
 }
 
-document.getElementById("search-bar").addEventListener("input", searchCustomers);
+document
+  .getElementById("search-bar")
+  .addEventListener("input", searchCustomers);
 
-document.getElementById("btnAddCustomerSubmit").addEventListener("click", addNewProduct);
+document
+  .getElementById("btnAddCustomerSubmit")
+  .addEventListener("click", addNewCustomer);
 
 //Add New Customer
-function addNewProduct(event) {
-    event.preventDefault();
+function addNewCustomer(event) {
+  event.preventDefault();
   const customerID = customers.length + 1;
   const firstName = document.getElementById("modalFirstName").value;
   const lastName = document.getElementById("modalLastName").value;
@@ -175,17 +184,13 @@ function addNewProduct(event) {
   ).value;
   const customerGender = gender.options[gender.selectedIndex].text;
 
-  console.log(customerGender);
-  
-
-  let img ="../assets/images/man.png";
-  if(customerGender === "Female"){
+  let img = "../assets/images/man.png";
+  if (customerGender === "Female") {
     img = "../assets/images/girl.png";
   }
 
-  for(let i = 0; i < customers.length; i++) {
-
-    if(customers[i].phoneNumber === phoneNumber){
+  for (let i = 0; i < customers.length; i++) {
+    if (customers[i].phoneNumber === phoneNumber) {
       deleteCustomer(i);
     }
   }
@@ -204,31 +209,32 @@ function addNewProduct(event) {
   };
 
   console.log(tempCustomerArray);
-  
-    //Add Product to Array
-    addCustomer(tempCustomerArray);
-  
-    const myModal = new bootstrap.Modal("#modalAddProduct");
-    myModal.hide();
-  }
 
+  //Add Product to Array
+  setCustomer(tempCustomerArray);
+  renderCustomerList();
 
+  alert("Customer Added Successfully");
+
+  const myModal = new bootstrap.Modal("#modalAddProduct");
+  myModal.hide();
+}
 
 function showSuccessModal() {
-    const successModal = new bootstrap.Modal(
-      document.getElementById("successAlertModal")
-    );
-    successModal.show();
-  }
-  
-  //Update Customer List
-  function updateCustomerList(newCustomer, index) {
-    // Render the new customer
-    const customerListContainer = document.getElementById("customer-list");
-    const customerCard = document.createElement("div");
+  const successModal = new bootstrap.Modal(
+    document.getElementById("successAlertModal")
+  );
+  successModal.show();
+}
 
-    customerCard.className = "col-lg-3 col-md-4 col-sm-12 mb-3 mt-4";
-    customerCard.innerHTML = `
+//Update Customer List
+function updateCustomerList(newCustomer, index) {
+  // Render the new customer
+  const customerListContainer = document.getElementById("customer-list");
+  const customerCard = document.createElement("div");
+
+  customerCard.className = "col-lg-3 col-md-4 col-sm-12 mb-3 mt-4";
+  customerCard.innerHTML = `
                   <div class="card customer-card align-items-center">
                       <img src="${newCustomer.img}" class="card-img-top" alt="${newCustomer.name}">
                       <div class="card-body">
@@ -246,55 +252,29 @@ function showSuccessModal() {
                       </div>
                   </div>
               `;
-        customerListContainer.appendChild(customerCard);
-  
-        document
-          .getElementById(`btnView-${index}`)
-          .addEventListener("click", () => loadCustomerDetails(index));
-        document
-          .getElementById(`btnEdit-${index}`)
-          .addEventListener("click", () => loadCustomerToModal(index));
-        document
-          .getElementById(`btnDelete-${index}`)
-          .addEventListener("click", () => deleteCustomer(index));
-  
-    showSuccessModal();
-  
-    // alert("Customer added successfully!");
-  }
-  
+  customerListContainer.appendChild(customerCard);
 
+  document
+    .getElementById(`btnView-${index}`)
+    .addEventListener("click", () => loadCustomerDetails(index));
+  document
+    .getElementById(`btnEdit-${index}`)
+    .addEventListener("click", () => loadCustomerToModal(index));
+  document
+    .getElementById(`btnDelete-${index}`)
+    .addEventListener("click", () => deleteCustomer(index));
 
-// save customers in Local Storage
-function saveCustomersToLocalStorage() {
-    localStorage.setItem("customerList", JSON.stringify(customers));
-  }
-  
-  // Add a customer and save to localStorage
-  function addCustomer(newCustomer) {
-    customers.push(newCustomer);
-    let index = customers.length - 1;
-    saveCustomersToLocalStorage();
-    updateCustomerList(newCustomer, index);
-  }
-  
-  // Delete customer
-  function deleteCustomer(index) {
-    customers.splice(index, 1);
-    saveCustomersToLocalStorage();
-    renderCustomerList();
-  }
-  
-  // Load customers from local storage
-  function loadCustomersFromLocalStorage() {
-    const storedCustomers = localStorage.getItem("customerList");
-    if (storedCustomers) {
-      customers = JSON.parse(storedCustomers);
-    }
-  }
-  
+  showSuccessModal();
+
+  // alert("Customer added successfully!");
+}
+
+// Delete customer
+function deleteCustomer(index) {
+  deleteCustomerFromArray(index);
+  renderCustomerList();
+}
 
 window.onload = function () {
-    loadCustomersFromLocalStorage();
   renderCustomerList();
 };

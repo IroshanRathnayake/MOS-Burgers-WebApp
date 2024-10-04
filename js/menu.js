@@ -1,6 +1,6 @@
-import { productList } from "./data.js";
+import { getProducts, setProduct, deleteProductFromArray } from "./data.js";
 
-let products = productList;
+let products = getProducts();
 
 function showAddMenuItemModal() {
   const myModal = new bootstrap.Modal("#modalAddProduct");
@@ -188,9 +188,8 @@ function addNewProduct() {
 
   const productCategory = category.options[category.selectedIndex].text;
 
-  for(let i = 0; i < products[productCategory].length; i++) {
-
-    if(products[productCategory][i].itemCode === productCode){
+  for (let i = 0; i < products[productCategory].length; i++) {
+    if (products[productCategory][i].itemCode === productCode) {
       deleteProduct(i);
     }
   }
@@ -210,7 +209,7 @@ function addNewProduct() {
   currentCategory = productCategory;
 
   //Add Product to Array
-  addProduct(newProduct);
+  setProduct(newProduct, currentCategory);
 
   const myModal = new bootstrap.Modal("#modalAddProduct");
   myModal.hide();
@@ -270,37 +269,14 @@ function updateProductList(newProduct, index) {
   // alert("Product added successfully!");
 }
 
-// save Products in Local Storage
-function saveProductsToLocalStorage() {
-  localStorage.setItem("productList", JSON.stringify(products));
-}
-
-// Add a product and save to localStorage
-function addProduct(newProduct) {
-  products[currentCategory].push(newProduct);
-  let index = products[currentCategory].length - 1;
-  saveProductsToLocalStorage();
-  updateProductList(newProduct, index);
-}
-
 // Delete product
 function deleteProduct(index) {
-  products[currentCategory].splice(index, 1);
-  saveProductsToLocalStorage();
+  deleteProductFromArray(index, currentCategory);
   renderProductList(currentCategory);
-}
-
-// Load produts from local storage
-function loadProductsFromLocalStorage() {
-  const storedProducts = localStorage.getItem("productList");
-  if (storedProducts) {
-    products = JSON.parse(storedProducts);
-  }
 }
 
 // load products when page loaded
 window.onload = function () {
-  loadProductsFromLocalStorage();
   renderProductList(currentCategory);
 };
 

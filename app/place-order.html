@@ -56,24 +56,43 @@
                             <div class="col">
                                 <div class="form-outline" data-mdb-input-init>
                                     <label class="form-label" for="modalFirstName">First name *</label>
-                                    <input type="text" id="modalFirstName" class="form-control" placeholder="John" />
+                                    <input type="text" id="modalFirstName" class="form-control"
+                                        placeholder="John" />
 
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-outline" data-mdb-input-init>
                                     <label class="form-label" for="modalLastName">Last name *</label>
-                                    <input type="text" id="modalLastName" class="form-control" placeholder="Smith" />
+                                    <input type="text" id="modalLastName" class="form-control"
+                                        placeholder="Smith" />
 
                                 </div>
                             </div>
                         </div>
 
                         <!-- Text input -->
-                        <div class="form-outline mb-4" data-mdb-input-init>
-                            <label class="form-label" for="modalOccupation">Occupation</label>
-                            <input type="text" id="modalOccupation" class="form-control"
-                                placeholder="Software Engineer" />
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <label class="form-label" for="modalOccupation">Occupation</label>
+                                    <input type="text" id="modalOccupation" class="form-control"
+                                        placeholder="Software Engineer" />
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline" data-mdb-input-init>
+                                    <label class="form-label" for="modalGender">Gender</label>
+                                    <select id="modalGender" class="form-control">
+                                        <option value="Option">Select Gender</option>
+                                        <option value="Option">Male</option>
+                                        <option value="Option">Female</option>
+                                        <option value="Option">Other</option>
+                                    </select>
+
+                                </div>
+                            </div>
 
                         </div>
 
@@ -87,14 +106,16 @@
                         <!-- Email input -->
                         <div class="form-outline mb-4" data-mdb-input-init>
                             <label class="form-label" for="modalEmail">Email</label>
-                            <input type="email" id="modalEmail" class="form-control" placeholder="example@email.com" />
+                            <input type="email" id="modalEmail" class="form-control"
+                                placeholder="example@email.com" />
 
                         </div>
 
                         <!-- Number input -->
                         <div class="form-outline mb-4" data-mdb-input-init>
                             <label class="form-label" for="ModalPhoneNumber">Phone Number *</label>
-                            <input type="text" id="modalPhoneNumber" class="form-control" placeholder="0771234567" />
+                            <input type="text" id="modalPhoneNumber" class="form-control"
+                                placeholder="0771234567" />
 
                         </div>
 
@@ -109,7 +130,7 @@
                         <!-- Submit button -->
                         <div class="d-flex justify-content-end">
                             <button type="reset" id="btnClear" class="btn btn-danger me-2" data-mdb-ripple-init ">Clear</button>
-                            <button type=" submit" id="btnAddCustomerSubmit" class="btn btn-success addButton">Add
+                        <button type=" submit" id="btnAddCustomerSubmit" class="btn btn-success addButton">Add
                                 Customer</button>
                         </div>
                     </form>
@@ -124,8 +145,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title" id="modalCartLabel">Product in the cart</h5>
-                    <button type="button" class="btn-close btn-close-white" data-mdb-ripple-init
-                        data-mdb-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -273,7 +293,7 @@
                                             class="cart-image">Cart</h5>
                                 </button>
 
-                                <div class="d-flex justify-content-md-between">
+                                <div class="d-flex justify-content-between">
                                     <div class="mt-3 prices-list">
                                         <h5 class="total-price">Price: <span id="total"></span>
                                         </h5>
@@ -285,7 +305,7 @@
 
                             </div>
                             <div class="form-group m-2 d-flex justify-content-end">
-                                <!-- <div id="spinner" class="spinner-border text-success m-4" role="status">
+                                <!-- <div id="spinner" class="spinner-border text-success m-4" role="status" aria-hidden="true">
                                     <span class="visually-hidden" id="spinner">Loading...</span>
                                   </div> -->
                                 <button type="reset" class="btn btn-danger p-3 m-1 btnClear"
@@ -301,7 +321,13 @@
             </div>
 
             <div class="col-lg-7 col-md-12 col-sm-12">
-                <h2 class="fw-semibold mb-3">Categories</h2>
+                <div class="row">
+                    <h2 class="col-lg-6 col-md-12 col-sm-12 fw-semibold mb-3">Categories</h2>
+                    <div class="col-lg-6 col-md-12 col-sm-12 mb-sm-3 text-center">
+                        <input type="text" id="search-bar" placeholder="Search products..." oninput="searchProducts()" />
+                    </div>
+                </div>
+
                 <div class="d-flex flex-wrap mb-3 justify-content-around" id="category-list">
                     <div class="category-card me-2 mb-2" id="burgers">
                         <img src="../assets/images/burger.png" alt="Burgers">
