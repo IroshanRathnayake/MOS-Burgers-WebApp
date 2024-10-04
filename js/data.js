@@ -621,6 +621,12 @@ let orderList = [
   // }
 ];
 
+//Get Orders
+export function getOrders() {
+    loadOrdersFromLocalStorage();
+    return orderList;
+  }
+  
 //Get Products
 export function getProducts() {
   loadProductsFromLocalStorage();
@@ -633,11 +639,7 @@ export function getCustomers() {
   return customerArray;
 }
 
-//Get Orders
-export function getOrders() {
-  loadOrdersFromLocalStorage();
-  return orderList;
-}
+
 
 //Product Operations
 export function setProduct(newProduct, category) {
