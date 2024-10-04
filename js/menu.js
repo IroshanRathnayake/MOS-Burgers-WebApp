@@ -187,6 +187,13 @@ function addNewProduct() {
   const discount = parseFloat(document.getElementById("modalDiscount").value);
 
   const productCategory = category.options[category.selectedIndex].text;
+
+  for(let i = 0; i < products[productCategory].length; i++) {
+
+    if(products[productCategory][i].itemCode === productCode){
+      deleteProduct(i);
+    }
+  }
   // Create a new product object
   const newProduct = {
     itemCode: productCode,

@@ -6,30 +6,6 @@
   --addButton-color: #03c90d;
 }
 
-.table {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  color: black;
-  font-size: 1rem;
-  align-items: center;
-  justify-content: center;
-}
-
-thead th {
-  font-family: "Poppins", sans-serif;
-  background-color: #fff4;
-  font-weight: 700;
-  color: black;
-  font-size: 1rem;
-}
-table,
-th,
-td {
-  border-collapse: collapse;
-  padding: 1rem;
-  text-align: left;
-}
-
 #search-bar{
   font-family: var(--primary-font);
   width: 60%;
