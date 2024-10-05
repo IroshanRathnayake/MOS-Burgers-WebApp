@@ -90,7 +90,7 @@ function loadCustomerDetails(index) {
 function loadCustomerToModal(index) {
   const customer = customers[index];
 
-  const customerID = customerArray.length + 1;
+  const customerID = customers.length + 1;
   const firstName = (document.getElementById("modalFirstName").value =
     customer.firstName);
   const lastName = (document.getElementById("modalLastName").value =

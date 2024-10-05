@@ -163,6 +163,28 @@ thead th:hover {
   color: var(--primary-color);
 }
 
+#orderDetailsModal {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+}
+#orderDetailsModal h6 {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+#modalOrderStatus {
+  background-color: #86e49d;
+  color: #006b21;
+
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0.3rem 0.8rem;
+}
+
 .export__file {
   position: relative;
 }
@@ -171,7 +193,7 @@ thead th:hover {
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  background: #fff6 url(/assets/images/export.png) center / 95% no-repeat;
+  background: #fff6 url(../assets/images/export.png) center / 95% no-repeat;
   border-radius: 50%;
   transition: 0.2s ease-in-out;
 }

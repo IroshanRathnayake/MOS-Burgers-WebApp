@@ -210,14 +210,14 @@ function addNewProduct() {
 
   //Add Product to Array
   setProduct(newProduct, currentCategory);
+  updateProductList(newProduct, products[productCategory].length - 1);
+  showSuccessModal();
 
   const myModal = new bootstrap.Modal("#modalAddProduct");
   myModal.hide();
 }
 function showSuccessModal() {
-  const successModal = new bootstrap.Modal(
-    document.getElementById("successAlertModal")
-  );
+  const successModal = new bootstrap.Modal("#successAlertModal");
   successModal.show();
 }
 

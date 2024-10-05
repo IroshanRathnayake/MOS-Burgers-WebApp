@@ -329,24 +329,15 @@ function btnPlaceOrderClicked(event) {
 
   const orderID = document.getElementById("orderID").innerHTML;
   const date = document.getElementById("DateandTime").innerHTML;
-  const customerName = document.getElementById(
-    "place_order_customerName"
-  ).value;
+  const customerName = document.getElementById("place_order_customerName").value;
   const phoneNumber = document.getElementById("place_order_phoneNumber").value;
   const address = document.getElementById("place_order_location").value;
   const additionalNotes = document.getElementById("additionalNotes").value;
-  const totalItems = parseFloat(
-    document.getElementById("total-items").innerHTML
-  );
-  const subtotal = parseFloat(
-    document.getElementById("subtotal").innerHTML.replace("LKR ", "").trim()
-  );
-  const discount = parseFloat(
-    document.getElementById("lblDiscount").innerHTML.replace("LKR ", "").trim()
-  );
-  const total = parseFloat(
-    document.getElementById("total").innerHTML.replace("LKR ", "").trim()
-  );
+  const totalItems = parseFloat(document.getElementById("total-items").innerHTML);
+  const subtotal = parseFloat(document.getElementById("subtotal").innerHTML.replace("LKR ", "").trim());
+  const discount = parseFloat(document.getElementById("lblDiscount").innerHTML.replace("LKR ", "").trim());
+  const total = parseFloat(document.getElementById("total").innerHTML.replace("LKR ", "").trim());
+  
   let customerID = "";
   getCustomers().forEach((customer) => {
     if (customer.phoneNumber === phoneNumber) {
@@ -354,72 +345,154 @@ function btnPlaceOrderClicked(event) {
     }
   });
 
+  // Check if the item list is not empty
+  if (!itemList || itemList.length === 0) {
+    console.error("No items found in the order.");
+    return;
+  }
+
   // Define the document definition
   var docDefinition = {
     content: [
+      // Title and Order Info
       { text: "Order Details", style: "header" },
       {
-        text: "Order ID: " + orderID,
+        text: `Order ID: ${orderID}`,
         margin: [0, 10, 0, 5],
+        style: "orderInfo"
       },
       {
-        text: "Customer Name: " + customerName,
+        text: `Customer Name: ${customerName}`,
         margin: [0, 0, 0, 5],
+        style: "orderInfo"
       },
       {
-        text: "Phone Number: " + phoneNumber,
-        margin: [0, 0, 0, 15],
+        text: `Phone Number: ${phoneNumber}`,
+        margin: [0, 0, 0, 5],
+        style: "orderInfo"
       },
+      {
+        text: `Address: ${address}`,
+        margin: [0, 0, 0, 15],
+        style: "orderInfo"
+      },
+
+      // Table of Items
       {
         table: {
           headerRows: 1,
           widths: ["*", "auto", "auto", "auto"],
-          body: [["Item", "Quantity", "Price", "Total"]],
+          body: [
+            [
+              { text: "Item", style: "tableHeader" },
+              { text: "Quantity", style: "tableHeader" },
+              { text: "Price", style: "tableHeader" },
+              { text: "Total", style: "tableHeader" }
+            ],
+          ],
         },
+        layout: {
+          fillColor: (rowIndex) => rowIndex === 0 ? "#dc6b19" : null,
+        }
       },
+
+      // Summary section
       {
-        text: totalItems,
+        text: `Total Items: ${totalItems}`,
         margin: [0, 10, 0, 5],
+        style: "summaryText"
       },
       {
-        subtotal,
+        text: `Subtotal: LKR ${subtotal.toFixed(2)}`,
         margin: [0, 0, 0, 5],
+        style: "summaryText"
       },
       {
-        discount,
+        text: `Discount: LKR ${discount.toFixed(2)}`,
         margin: [0, 0, 0, 5],
+        style: "summaryText"
       },
       {
-        total,
+        text: `Total: LKR ${total.toFixed(2)}`,
         style: "total",
+        margin: [0, 10, 0, 0]
       },
+
+      // Additional Notes
+      {
+        text: `Additional Notes: ${additionalNotes}`,
+        margin: [0, 10, 0, 5],
+        style: "notes"
+      }
     ],
+    
+    // Styles
     styles: {
       header: {
-        fontSize: 18,
+        fontSize: 22,
         bold: true,
-        margin: [0, 0, 0, 10],
+        alignment: 'center',
+        margin: [0, 0, 0, 20],
+        color: "#dc6b19"
+      },
+      orderInfo: {
+        fontSize: 12,
+        margin: [0, 5, 0, 5],
+        color: "#333333"
+      },
+      tableHeader: {
+        bold: true,
+        fontSize: 14,
+        color: "white",
+        alignment: "center"
+      },
+      tableContent: {
+        fontSize: 12,
+        color: "#333333",
+        alignment: "center"
+      },
+      summaryText: {
+        fontSize: 12,
+        bold: true,
+        color: "#333333"
       },
       total: {
         fontSize: 16,
         bold: true,
-        margin: [0, 10, 0, 0],
+        alignment: 'right',
+        color: "#dc6b19"
       },
+      notes: {
+        fontSize: 12,
+        italics: true,
+        color: "#888888"
+      }
     },
   };
 
   // Add order items to the table
   itemList.forEach((item) => {
     if (item.quantity > 0) {
-      docDefinition.content[4].table.body.push([
-        item.name,
-        item.quantity.toString(),
-        item.price.toFixed(2),
-        (item.price * item.quantity).toFixed(2),
+      docDefinition.content[5].table.body.push([
+        { text: item.name, style: "tableContent" },
+        { text: item.quantity.toString(), style: "tableContent" },
+        { text: `LKR ${item.price.toFixed(2)}`, style: "tableContent" },
+        { text: `LKR ${(item.price * item.quantity).toFixed(2)}`, style: "tableContent" }
       ]);
     }
   });
 
+  // Check if the table has items
+  if (docDefinition.content[5].table.body.length <= 1) {
+    console.error("No items to display in the table.");
+    return;
+  }
+
+  // Generate the PDF
+  const pdfName = orderID + ".pdf";
+  pdfMake.createPdf(docDefinition).download(pdfName);
+
+  // Save the order
   const newOrder = {
     customerID: customerID,
     customerName: customerName,
@@ -434,18 +507,18 @@ function btnPlaceOrderClicked(event) {
     discount: discount,
     totalAmount: total,
   };
-
+  
   setOrder(newOrder);
   console.log(newOrder);
 
-  // Generate the PDF
-  pdfMake.createPdf(docDefinition).download("order_details.pdf");
+  // Clear the order form
   updateOrderID();
   clearOrderList();
   btnClearClicked();
 
   console.log("PDF generation initiated");
 }
+
 
 window.onload = function () {
   dateAndTime();
