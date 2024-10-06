@@ -391,30 +391,36 @@ let orderList = [
     orderId: "P001",
     items: [
       {
-        itemId: "B1001",
-        itemName: "Classic Burger",
+        itemCode: "B1001",
+        name: "Classic Burger",
         quantity: 2,
-        unitPrice: 1500.0,
+        price: 1500.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10026",
-        itemName: "French Fries",
+        itemCode: "B10026",
+        name: "French Fries",
         quantity: 1,
-        unitPrice: 800.0,
+        price: 800.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10032",
-        itemName: "Pepsi (330ml)",
+        itemCode: "B10032",
+        name: "Pepsi (330ml)",
         quantity: 1,
-        unitPrice: 990.0,
-      },
+        price: 990.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
+      }
     ],
     additionalInfo: "",
     date: "3/10/2024",
     totalItems: 4,
     subTotal: 4790.0,
     discount: 19.8,
-    totalAmount: 4770.2,
+    totalAmount: 4770.2
   },
   {
     customerId: 2,
@@ -424,24 +430,28 @@ let orderList = [
     orderId: "P002",
     items: [
       {
-        itemId: "B10011",
-        itemName: "Double Cheese Chicken Submarine",
+        itemCode: "B10011",
+        name: "Double Cheese Chicken Submarine",
         quantity: 1,
-        unitPrice: 1900.0,
+        price: 1900.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10033",
-        itemName: "Coca-Cola (330ml)",
+        itemCode: "B10033",
+        name: "Coca-Cola (330ml)",
         quantity: 2,
-        unitPrice: 1230.0,
-      },
+        price: 1230.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
+      }
     ],
     additionalInfo: "",
     date: "3/10/2024",
     totalItems: 3,
     subTotal: 4360.0,
     discount: 304.0,
-    totalAmount: 4056.0,
+    totalAmount: 4056.0
   },
   {
     customerId: 3,
@@ -451,30 +461,36 @@ let orderList = [
     orderId: "P003",
     items: [
       {
-        itemId: "B10018",
-        itemName: "Chicken Cheese Pasta",
+        itemCode: "B10018",
+        name: "Chicken Cheese Pasta",
         quantity: 1,
-        unitPrice: 1600.0,
+        price: 1600.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B1005",
-        itemName: "Crispy Chicken Burger",
+        itemCode: "B1005",
+        name: "Crispy Chicken Burger",
         quantity: 1,
-        unitPrice: 1200.0,
+        price: 1200.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10034",
-        itemName: "Sprite (330ml)",
+        itemCode: "B10034",
+        name: "Sprite (330ml)",
         quantity: 1,
-        unitPrice: 1500.0,
-      },
+        price: 1500.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
+      }
     ],
     additionalInfo: "",
     date: "3/10/2024",
     totalItems: 3,
     subTotal: 4300.0,
     discount: 285.0,
-    totalAmount: 4015.0,
+    totalAmount: 4015.0
   },
   {
     customerId: 4,
@@ -484,24 +500,28 @@ let orderList = [
     orderId: "P004",
     items: [
       {
-        itemId: "B1009",
-        itemName: "Double Cheese Burger",
+        itemCode: "B1009",
+        name: "Double Cheese Burger",
         quantity: 1,
-        unitPrice: 1250.0,
+        price: 1250.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10025",
-        itemName: "Steak Fries",
+        itemCode: "B10025",
+        name: "Steak Fries",
         quantity: 1,
-        unitPrice: 1200.0,
-      },
+        price: 1200.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
+      }
     ],
     additionalInfo: "",
     date: "3/10/2024",
     totalItems: 2,
     subTotal: 2450.0,
     discount: 250.0,
-    totalAmount: 2200.0,
+    totalAmount: 2200.0
   },
   {
     customerId: 5,
@@ -511,24 +531,28 @@ let orderList = [
     orderId: "P005",
     items: [
       {
-        itemId: "B10012",
-        itemName: "MOS Special Submarine",
+        itemCode: "B10012",
+        name: "MOS Special Submarine",
         quantity: 1,
-        unitPrice: 3000.0,
+        price: 3000.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10035",
-        itemName: "Mirinda (330ml)",
+        itemCode: "B10035",
+        name: "Mirinda (330ml)",
         quantity: 1,
-        unitPrice: 850.0,
-      },
+        price: 850.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
+      }
     ],
     additionalInfo: "",
     date: "3/10/2024",
     totalItems: 2,
     subTotal: 3850.0,
     discount: 59.5,
-    totalAmount: 3790.5,
+    totalAmount: 3790.5
   },
   {
     customerId: 6,
@@ -538,87 +562,29 @@ let orderList = [
     orderId: "P006",
     items: [
       {
-        itemId: "B1002",
-        itemName: "Turkey Burger",
+        itemCode: "B1002",
+        name: "Turkey Burger",
         quantity: 2,
-        unitPrice: 1600.0,
+        price: 1600.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
       },
       {
-        itemId: "B10027",
-        itemName: "Potato Fries",
+        itemCode: "B10027",
+        name: "Potato Fries",
         quantity: 1,
-        unitPrice: 600.0,
-      },
+        price: 600.0,
+        discount: 0,
+        img: "../assets/images/Burger-Category/chicken-burger.webp"
+      }
     ],
     additionalInfo: "",
     date: "4/10/2024",
     totalItems: 3,
     subTotal: 3800.0,
     discount: 480.0,
-    totalAmount: 3320.0,
-  },
-  // {
-  //   customerId: 7,
-  //   customerName: "Sanduni Jayasinghe",
-  //   phoneNumber: "0745678910",
-  //   address: "404 Hill Street, Matara",
-  //   orderId: "P007",
-  //   items: [
-  //     { itemId: "B10020", itemName: "Ground Turkey Pasta Bake", quantity: 1, unitPrice: 2900.00 },
-  //     { itemId: "B10032", itemName: "Pepsi (330ml)", quantity: 2, unitPrice: 990.00 }
-  //   ],
-  //   totalItems: 3,
-  //   subTotal: 4880.00,
-  //   discount: 329.80,
-  //   totalAmount: 4550.20
-  // },
-  // {
-  //   customerId: 8,
-  //   customerName: "Chathurika Gunasekara",
-  //   phoneNumber: "0713456789",
-  //   address: "505 River View, Ratnapura",
-  //   orderId: "P008",
-  //   items: [
-  //     { itemId: "B1008", itemName: "Shawarma Burger", quantity: 1, unitPrice: 800.00 },
-  //     { itemId: "B10028", itemName: "Fried Chicken", quantity: 1, unitPrice: 1200.00 },
-  //     { itemId: "B10033", itemName: "Coca-Cola (330ml)", quantity: 1, unitPrice: 1230.00 }
-  //   ],
-  //   totalItems: 3,
-  //   subTotal: 3230.00,
-  //   discount: 96.00,
-  //   totalAmount: 3134.00
-  // },
-  // {
-  //   customerId: 9,
-  //   customerName: "Ruwan Dias",
-  //   phoneNumber: "0729876543",
-  //   address: "606 Beach Front, Kalutara",
-  //   orderId: "P009",
-  //   items: [
-  //     { itemId: "B10015", itemName: "Chicken Submarine", quantity: 1, unitPrice: 2000.00 },
-  //     { itemId: "B10026", itemName: "French Fries", quantity: 1, unitPrice: 800.00 }
-  //   ],
-  //   totalItems: 2,
-  //   subTotal: 2800.00,
-  //   discount: 0,
-  //   totalAmount: 2800.00
-  // },
-  // {
-  //   customerId: 10,
-  //   customerName: "Tharindu Rajapaksha",
-  //   phoneNumber: "0775566778",
-  //   address: "707 Green Lane, Gampaha",
-  //   orderId: "P0010",
-  //   items: [
-  //     { itemId: "B1004", itemName: "Cheese Chicken Burger", quantity: 2, unitPrice: 1000.00 },
-  //     { itemId: "B10031", itemName: "Creamy Shrimp Pasta", quantity: 1, unitPrice: 2000.00 },
-  //     { itemId: "B10034", itemName: "Sprite (330ml)", quantity: 1, unitPrice: 1500.00 }
-  //   ],
-  //   totalItems: 4,
-  //   subTotal: 5500.00,
-  //   discount: 145.00,
-  //   totalAmount: 5355.00
-  // }
+    totalAmount: 3320.0
+  }
 ];
 
 //Get Orders

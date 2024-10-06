@@ -54,10 +54,10 @@ function renderOrderTable() {
         order.items.forEach((item) => {
           const row = `
             <tr>
-              <td>${item.itemName}</td>
+              <td>${item.name}</td>
               <td>${item.quantity}</td>
-              <td>LKR ${item.unitPrice.toFixed(2)}</td>
-              <td>LKR ${(item.quantity * item.unitPrice).toFixed(2)}</td>
+              <td>LKR ${item.price.toFixed(2)}</td>
+              <td>LKR ${(item.quantity * item.price).toFixed(2)}</td>
             </tr>`;
           modalOrderItems.insertAdjacentHTML("beforeend", row);
         });
